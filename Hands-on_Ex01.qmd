@@ -1,0 +1,71 @@
+---
+title: "R series Hands-on Exercise 1:"
+subtitle: "My First Date with Quarto"
+author: Dr. Kam Tin Seong
+format: 
+  html:
+    toc: true
+number-sections: true
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  message: false
+---
+
+## Getting Started
+
+Let us set up the R environment by loading the necessary R packages.
+
+```{r}
+pacman::p_load(tidyverse, knitr)
+```
+
+## Loading Data
+
+Now, let us load import a csv file into R by using read_csv function of readr package.
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```
+
+### Displaying data table
+
+Next, we will display the exam_data table by using kable() of knitr package.
+
+```{r}
+kable(head(exam_data, n = 10))
+```
+
+## Exploratory Data Analysis
+
+Let us plot a bar chart
+
+```{r}
+#| echo: false
+ggplot(data = exam_data,
+       aes(x = GENDER)) +
+  geom_bar()
+```
+
+### Now you see it!
+
+::: panel-tabset
+## The code
+
+```{r}
+#| eval: false
+ggplot(data = exam_data,
+       aes(x = GENDER)) +
+  geom_bar()
+```
+
+## The Graphic
+
+```{r}
+#| echo: false
+ggplot(data = exam_data,
+       aes(x = GENDER)) +
+  geom_bar()
+```
+:::
